@@ -4,5 +4,6 @@
       "mode": "auto"
     }
   ],
+  "tailwindCSS.classFunctions": ["clsx", "cva", "cn"],
   "tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css"
 }
