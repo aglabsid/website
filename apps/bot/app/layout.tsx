@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Gabarito as FontSans } from 'next/font/google'
-import './globals.css'
+import '@repo/ui/globals.css'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -20,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontSans.variable} font-sans`}>{children}</body>
+      <body
+        className={`${fontSans.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
+        {children}
+      </body>
     </html>
   )
 }
