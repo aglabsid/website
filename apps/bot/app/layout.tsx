@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Gabarito as FontSans } from 'next/font/google'
+import Script from 'next/script'
+
 import '@repo/ui/globals.css'
 
 const fontSans = FontSans({
@@ -21,10 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontSans.variable} font-sans antialiased`}
+        className={`${fontSans.variable} bg-slate-50 font-sans antialiased`}
         suppressHydrationWarning
       >
         {children}
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            async
+            defer
+            src="https://analytics.hendraaagil.dev/script.js"
+            data-website-id="2513941b-6ff7-4a51-bb69-0126eeb4983e"
+          />
+        )}
       </body>
     </html>
   )
