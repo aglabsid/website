@@ -12,6 +12,7 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bot.aglabs.id'),
   title: 'Aglabs Bot',
   description: 'A bot by Aglabs.',
 }
