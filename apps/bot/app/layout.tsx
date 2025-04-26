@@ -3,6 +3,7 @@ import { Gabarito as FontSans } from 'next/font/google'
 import Script from 'next/script'
 
 import '@repo/ui/globals.css'
+import { cn } from '@repo/ui/lib/utils'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -23,7 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fontSans.variable} bg-slate-50 font-sans antialiased`}
+        className={cn(
+          fontSans.variable,
+          'border-border flex min-h-screen items-center border-4 font-sans antialiased',
+          'bg-slate-50 bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:48px_48px]',
+        )}
         suppressHydrationWarning
       >
         {children}
