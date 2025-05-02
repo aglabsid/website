@@ -11,6 +11,8 @@ const fontSans = FontSans({
   variable: '--font-sans',
 })
 
+console.log('URL >>', process.env.URL)
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://bot.aglabs.id'),
   title: 'Aglabs Bot',
