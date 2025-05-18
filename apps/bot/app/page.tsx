@@ -11,7 +11,17 @@ export default function Home() {
           className="max-w-3xs rounded-full"
         />
       </div>
-      <h1 className="text-center text-4xl font-bold">Aglabs Bot</h1>
+      <h1 className="text-center text-4xl font-bold">
+        <a
+          href="https://aglabs.id"
+          className="text-main hover:underline"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Aglabs
+        </a>{' '}
+        Bot
+      </h1>
       <ChatButton />
     </main>
   )
