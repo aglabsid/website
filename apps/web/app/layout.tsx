@@ -26,8 +26,8 @@ export default function RootLayout({
       <body
         className={cn(
           fontSans.variable,
-          'font-sans antialiased',
-          'bg-slate-900 text-slate-50',
+          'flex min-h-screen items-center font-sans antialiased',
+          'bg-slate-50',
         )}
         suppressHydrationWarning
       >
