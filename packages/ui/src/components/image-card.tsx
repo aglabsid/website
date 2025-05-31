@@ -1,13 +1,19 @@
 import { cn } from '@repo/ui/lib/utils'
 
-type Props = {
-  imageUrl: string
-  caption: string
-  className?: string
+type ImageCardProps = React.DetailedHTMLProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+> & {
   hasCaption?: boolean
 }
 
-export function ImageCard({ imageUrl, caption, className, hasCaption }: Props) {
+export function ImageCard({
+  src,
+  alt,
+  className,
+  hasCaption,
+  ...props
+}: ImageCardProps) {
   return (
     <figure
       className={cn(
@@ -15,10 +21,10 @@ export function ImageCard({ imageUrl, caption, className, hasCaption }: Props) {
         className,
       )}
     >
-      <img className="w-full" src={imageUrl} alt={caption} />
+      <img className="w-full" src={src} alt={alt} {...props} />
       {hasCaption && (
         <figcaption className="text-main-foreground border-border border-t-2 p-4">
-          {caption}
+          {alt}
         </figcaption>
       )}
     </figure>
