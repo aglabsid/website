@@ -4,27 +4,24 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "dev": "astro dev --port 3001",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "astro check"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
-    "lucide-react": "^0.503.0",
-    "next": "^15.3.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "astro": "^5.0.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.10.7",
+    "@astrojs/check": "^0.9.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^22.14.0",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
     "eslint": "^9.25.0",
+    "tailwindcss": "^4.1.4",
     "typescript": "5.8.2"
   }
 }

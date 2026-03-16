@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ImageCard from '../components/ImageCard.astro'
+import ChatButton from '../components/ChatButton.astro'
+---
+
+<Layout title="Aglabs Bot" description="A bot by Aglabs.">
+  <main
+    class="mx-auto flex w-full max-w-lg flex-col items-center justify-center space-y-8 px-4 py-8"
+  >
+    <div class="px-4">
+      <ImageCard
+        src="/logo.png"
+        alt="Aglabs Bot"
+        class="max-w-3xs rounded-full"
+        fetchpriority="high"
+      />
+    </div>
+    <h1 class="text-center text-4xl font-bold">
+      <a
+        href="https://aglabs.id"
+        class="text-main hover:underline"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Aglabs
+      </a>{' '}
+      Bot
+    </h1>
+    <ChatButton />
+  </main>
+</Layout>

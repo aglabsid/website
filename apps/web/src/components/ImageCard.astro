@@ -1,0 +1,29 @@
+---
+import { cn } from '@repo/ui/lib/utils'
+
+interface Props {
+  src: string
+  alt: string
+  class?: string
+  fetchpriority?: 'high' | 'low' | 'auto'
+  hasCaption?: boolean
+}
+
+const { src, alt, class: className, hasCaption, ...rest } = Astro.props
+---
+
+<figure
+  class={cn(
+    'rounded-base border-border bg-main font-base shadow-shadow max-w-xs overflow-hidden border-2',
+    className,
+  )}
+>
+  <img class="w-full" src={src} alt={alt} {...rest} />
+  {
+    hasCaption && (
+      <figcaption class="text-main-foreground border-border border-t-2 p-4">
+        {alt}
+      </figcaption>
+    )
+  }
+</figure>

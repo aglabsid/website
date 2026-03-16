@@ -1,0 +1,42 @@
+---
+import '@repo/ui/globals.css'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    {
+      import.meta.env.PROD && (
+        <script
+          async
+          defer
+          src="https://analytics.hendraaagil.dev/script.js"
+          data-website-id="1a383cd2-c61c-407d-b23c-24d89029bbcd"
+        />
+      )
+    }
+  </head>
+  <body
+    class="flex min-h-screen items-center bg-slate-50 font-[Gabarito] antialiased"
+  >
+    <slot />
+  </body>
+</html>
