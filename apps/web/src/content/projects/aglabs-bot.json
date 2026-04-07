@@ -1,0 +1,7 @@
+{
+  "order": 1,
+  "title": "Aglabs Bot",
+  "description": "A Telegram bot built for the Aglabs ecosystem. Handles automation, notifications, and interactive commands for the community.",
+  "tags": ["Telegram", "Bot", "Node.js"],
+  "href": "https://bot.aglabs.id"
+}

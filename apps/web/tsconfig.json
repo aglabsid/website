@@ -1,12 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@repo/ui/*": ["../../packages/ui/src/*"]
+      "@repo/ui/lib/*": ["../../packages/ui/src/lib/*"],
+      "@repo/ui/components/*": ["../../packages/ui/src/components/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.astro", "astro.config.mjs"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", "astro.config.mjs", ".astro/types.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

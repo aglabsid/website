@@ -1,22 +1,27 @@
 ---
+import { getCollection } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
-import ImageCard from '../components/ImageCard.astro'
-import MailButton from '../components/MailButton.astro'
+import Navbar from '../components/Navbar'
+import HeroSection from '../components/HeroSection'
+import AboutSection from '../components/AboutSection'
+import ProjectsSection from '../components/ProjectsSection'
+import Footer from '../components/Footer'
+
+const projectEntries = await getCollection('projects')
+const projects = projectEntries
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ id, data: { order: _order, ...data } }) => ({ id, ...data }))
 ---
 
-<Layout title="Aglabs Dev" description="An innovative labs.">
-  <main
-    class="mx-auto flex w-full max-w-lg flex-col items-center justify-center space-y-8 px-4 py-8"
-  >
-    <div class="px-4">
-      <ImageCard
-        src="/logo-primary.svg"
-        alt="Aglabs Dev"
-        class="max-w-3xs rounded-full"
-        fetchpriority="high"
-      />
-    </div>
-    <h1 class="mt-8 text-center text-4xl font-bold">Aglabs Dev</h1>
-    <MailButton />
+<Layout
+  title="Aglabs — Software Lab & Experiment"
+  description="Aglabs is an independent software lab. We experiment with ideas, build tools, and ship what works."
+>
+  <Navbar client:load />
+  <main>
+    <HeroSection client:load />
+    <AboutSection client:visible />
+    <ProjectsSection projects={projects} client:visible />
   </main>
+  <Footer client:visible />
 </Layout>

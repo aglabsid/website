@@ -1,0 +1,7 @@
+{
+  "order": 2,
+  "title": "Nextalism",
+  "description": "Minimalist Next.js starter template with Neobrutalism UI. Comes batteries-included with Tailwind CSS, shadcn/ui, Drizzle ORM, and TypeScript.",
+  "tags": ["Next.js", "Neobrutalism", "Template", "Drizzle ORM"],
+  "href": "https://nextalism.aglabs.id/"
+}
