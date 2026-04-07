@@ -20,6 +20,7 @@ const ogImage = new URL('/open-graph.png', Astro.url).toString()
     <link rel="icon" href="/favicon.ico" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:type" content="image/png" />
