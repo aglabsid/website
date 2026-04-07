@@ -7,15 +7,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: oklch(93.46% 0.0305 255.11);
   --secondary-background: oklch(100% 0 0);
-  --foreground: oklch(0% 0 0);
-  --main-foreground: oklch(0% 0 0);
+  --foreground: oklch(20.8% 0.042 265.755);
+  --main-foreground: oklch(20.8% 0.042 265.755);
   --main: oklch(67.47% 0.1726 259.49);
-  --border: oklch(0% 0 0);
-  --ring: oklch(0% 0 0);
-  --overlay: oklch(0% 0 0 / 0.8);
+  --border: oklch(20.8% 0.042 265.755);
+  --ring: oklch(20.8% 0.042 265.755);
   --shadow: 4px 4px 0px 0px var(--border);
 }
 
@@ -23,9 +26,9 @@
   --background: oklch(29.23% 0.0626 270.49);
   --secondary-background: oklch(23.93% 0 0);
   --foreground: oklch(92.49% 0 0);
-  --main-foreground: oklch(0% 0 0);
+  --main-foreground: oklch(20.8% 0.042 265.755);
   --main: oklch(67.47% 0.1726 259.49);
-  --border: oklch(0% 0 0);
+  --border: oklch(100% 0 0);
   --ring: oklch(100% 0 0);
   --shadow: 4px 4px 0px 0px var(--border);
 }
@@ -37,7 +40,6 @@
   --color-foreground: var(--foreground);
   --color-main-foreground: var(--main-foreground);
   --color-border: var(--border);
-  --color-overlay: var(--overlay);
   --color-ring: var(--ring);
 
   --spacing-boxShadowX: 4px;
