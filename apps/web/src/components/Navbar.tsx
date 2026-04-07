@@ -84,7 +84,15 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMenuOpen(false)
+                    setTimeout(() => {
+                      document
+                        .querySelector(link.href)
+                        ?.scrollIntoView({ behavior: 'smooth' })
+                    }, 200)
+                  }}
                   className="text-foreground/75 hover:text-foreground py-2 text-sm font-medium transition-colors"
                 >
                   {link.label}

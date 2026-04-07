@@ -38,7 +38,7 @@ export default function ProjectsSection({ projects }: Props) {
           className="mb-16"
         >
           <h2 className="text-foreground mb-4 text-4xl font-black tracking-tight md:text-5xl">
-            Lab <span className="text-main">Projects</span>
+            <span className="text-main">Projects</span> Lab
           </h2>
           <p className="text-foreground/75 text-lg">
             A selection of experiments that made it out of the lab.
@@ -54,26 +54,28 @@ export default function ProjectsSection({ projects }: Props) {
         >
           {projects.map((project) => (
             <Card key={project.id}>
-              <div>
-                <div className="mb-4 flex items-start justify-between">
-                  <h3 className="text-foreground text-xl font-bold">
-                    {project.title}
-                  </h3>
-                  {project.href && (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/40 hover:text-main transition-colors"
-                      aria-label={`Visit ${project.title}`}
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
+              <div className="flex h-full flex-col justify-between">
+                <div>
+                  <div className="mb-4 flex items-start justify-between">
+                    <h3 className="text-foreground text-xl font-bold">
+                      {project.title}
+                    </h3>
+                    {project.href && (
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground/40 hover:text-main transition-colors"
+                        aria-label={`Visit ${project.title}`}
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
+                  <p className="text-foreground/75 mb-6 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
-                <p className="text-foreground/75 mb-6 text-sm leading-relaxed">
-                  {project.description}
-                </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span

@@ -53,7 +53,7 @@ export default function HeroSection() {
             alt="Aglabs"
             width={96}
             height={96}
-            className="mx-auto"
+            className="mx-auto size-24 md:size-32 lg:size-40"
           />
         </motion.div>
 
@@ -114,22 +114,22 @@ export default function HeroSection() {
             Get In Touch
           </Button>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="mt-16"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="text-foreground/30 inline-block"
-          >
-            <ArrowDown size={24} />
-          </motion.div>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 sm:bottom-16"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="text-main/50 inline-block"
+        >
+          <ArrowDown size={24} />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
