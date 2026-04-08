@@ -61,7 +61,7 @@ export default function AboutSection() {
         >
           {pillars.map((pillar) => (
             <Card key={pillar.title}>
-              <div className="border-border bg-main text-main-foreground mb-4 inline-flex h-12 w-12 items-center justify-center border-2">
+              <div className="border-border bg-main text-main-foreground mb-4 inline-flex size-12 items-center justify-center border-2">
                 {pillar.icon}
               </div>
               <h3 className="text-foreground mb-2 text-xl font-bold">

@@ -11,7 +11,7 @@ const variants = {
 
 const sizes = {
   default: 'h-11 px-8 text-base',
-  icon: 'h-10 w-10',
+  icon: 'size-10',
 }
 
 interface BaseProps {

@@ -1,4 +1,5 @@
-import { motion, stagger } from 'motion/react'
+import { motion, stagger, useMotionValue, useSpring } from 'motion/react'
+import { useRef } from 'react'
 import { ArrowDown, Mail } from 'lucide-react'
 import { cn } from '@repo/ui/lib/utils'
 import Button from '@repo/ui/components/Button'
@@ -21,13 +22,44 @@ const wordVariant = {
 }
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const rawX = useMotionValue(-9999)
+  const rawY = useMotionValue(-9999)
+  const cursorX = useSpring(rawX, { stiffness: 80, damping: 20, mass: 0.5 })
+  const cursorY = useSpring(rawY, { stiffness: 80, damping: 20, mass: 0.5 })
+
+  const rawOpacity = useMotionValue(0.4)
+  const blobOpacity = useSpring(rawOpacity, { stiffness: 120, damping: 20 })
+
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = sectionRef.current?.getBoundingClientRect()
+    if (!rect) return
+    rawX.set(e.clientX - rect.left - 160)
+    rawY.set(e.clientY - rect.top - 160)
+  }
+
+  function handleMouseDown() {
+    rawOpacity.set(0.6)
+  }
+
+  function handleMouseUp() {
+    rawOpacity.set(0.4)
+  }
+
   const title = 'Aglabs'
   const subtitle = ['Software', 'Lab', '&', 'Experiment']
   const tagline =
     'Where ideas become experiments, and experiments become software.'
 
   return (
-    <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 py-16">
+    <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 py-16"
+    >
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0"
@@ -37,8 +69,12 @@ export default function HeroSection() {
             backgroundSize: '80px 80px',
           }}
         />
-        <div className="bg-main absolute left-1/4 top-1/4 h-96 w-96 opacity-20 blur-[120px]" />
-        <div className="bg-main absolute bottom-1/4 right-1/4 h-64 w-64 opacity-20 blur-[100px]" />
+        <div className="bg-main absolute left-1/4 top-1/4 size-96 opacity-20 blur-[120px]" />
+        <div className="bg-main absolute bottom-1/4 right-1/4 size-64 opacity-20 blur-[100px]" />
+        <motion.div
+          className="bg-main pointer-events-none absolute size-80 rounded-full blur-[80px]"
+          style={{ x: cursorX, y: cursorY, opacity: blobOpacity }}
+        />
       </div>
 
       <div className="mx-auto w-full max-w-4xl text-center">
@@ -46,7 +82,7 @@ export default function HeroSection() {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mb-8 inline-block"
+          className="pointer-events-none mb-8 inline-block select-none"
         >
           <img
             src="/logo-primary.svg"
