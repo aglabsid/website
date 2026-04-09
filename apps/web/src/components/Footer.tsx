@@ -2,6 +2,10 @@
 
 import { motion } from 'motion/react'
 import { Mail } from 'lucide-react'
+import {
+  IconBrandInstagram as InstagramIcon,
+  IconBrandLinkedin as LinkedInIcon,
+} from '@tabler/icons-react'
 import Button from '@repo/ui/components/Button'
 
 export default function Footer() {
@@ -30,11 +34,31 @@ export default function Footer() {
         </motion.div>
 
         <div className="border-border flex flex-col items-center justify-between gap-4 border-t-2 pt-8 sm:flex-row">
-          <div className="flex items-center gap-2">
+          <div className="sm:min-w-46 flex items-center gap-2">
             <img src="/logo-primary.svg" alt="" width={24} height={24} />
             <span className="text-foreground text-sm font-bold">Aglabs</span>
           </div>
-          <p className="text-foreground/40 text-xs">
+          <div className="sm:min-w-46 flex items-center gap-3 sm:justify-center">
+            <a
+              href="https://www.linkedin.com/company/aglabsid"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/50 hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <LinkedInIcon size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/aglabs.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/50 hover:text-foreground transition-colors"
+              aria-label="Instagram"
+            >
+              <InstagramIcon size={24} />
+            </a>
+          </div>
+          <p className="text-foreground/50 sm:min-w-46 text-xs sm:text-end">
             &copy; {currentYear} Aglabs. All rights reserved.
           </p>
         </div>

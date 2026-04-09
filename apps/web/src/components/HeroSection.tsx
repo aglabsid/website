@@ -106,7 +106,7 @@ export default function HeroSection() {
           variants={container}
           initial="hidden"
           animate="visible"
-          className="text-foreground mb-8 flex items-center justify-center gap-3 text-3xl font-bold md:text-4xl"
+          className="text-foreground mb-8 flex flex-wrap items-center justify-center gap-2 text-3xl font-bold sm:gap-3 md:text-4xl"
         >
           {subtitle.map((word, i) => (
             <motion.span

@@ -27,10 +27,13 @@ export default function Navbar() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className={cn('fixed left-0 right-0 top-0 z-50 transition-colors', {
-        'border-border bg-background border-b-2': menuOpen || scrolled,
-        'bg-transparent': !menuOpen && !scrolled,
-      })}
+      className={cn(
+        'fixed left-0 right-0 top-0 z-50 border-b-2 transition-colors',
+        {
+          'border-border bg-background': menuOpen || scrolled,
+          'border-transparent bg-transparent': !menuOpen && !scrolled,
+        },
+      )}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <a

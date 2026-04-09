@@ -34,6 +34,9 @@ html {
 }
 
 @theme inline {
+  /* Override default values */
+  --default-transition-duration: 300ms;
+
   --color-main: var(--main);
   --color-background: var(--background);
   --color-secondary-background: var(--secondary-background);
