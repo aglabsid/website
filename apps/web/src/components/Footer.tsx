@@ -5,6 +5,7 @@ import { Mail } from 'lucide-react'
 import {
   IconBrandInstagram as InstagramIcon,
   IconBrandLinkedin as LinkedInIcon,
+  IconBrandWhatsapp as WhatsAppIcon,
 } from '@tabler/icons-react'
 import Button from '@repo/ui/components/Button'
 
@@ -25,12 +26,24 @@ export default function Footer() {
             Let&apos;s <span className="text-main">Connect</span>
           </h2>
           <p className="text-foreground/75 mx-auto mb-8 max-w-md">
-            Have an idea, a question, or just want to say hi? Drop us an email.
+            Have an idea, a question, or just want to say hi? Drop us an email
+            or message us on WhatsApp.
           </p>
-          <Button href="mailto:hi@aglabs.id" data-umami-event="mail-footer">
-            <Mail size={16} aria-hidden="true" />
-            hi@aglabs.id
-          </Button>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="mailto:hi@aglabs.id" data-umami-event="mail-footer">
+              <Mail size={16} aria-hidden="true" />
+              hi@aglabs.id
+            </Button>
+            <Button
+              href="https://wa.me/628159997830"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="whatsapp-footer"
+            >
+              <WhatsAppIcon size={16} aria-hidden="true" />
+              WhatsApp
+            </Button>
+          </div>
         </motion.div>
 
         <div className="border-border flex flex-col items-center justify-between gap-4 border-t-2 pt-8 sm:flex-row">

@@ -1,6 +1,7 @@
 import { motion, stagger, useMotionValue, useSpring } from 'motion/react'
 import { useRef } from 'react'
 import { ArrowDown, Mail } from 'lucide-react'
+import { IconBrandWhatsapp as WhatsAppIcon } from '@tabler/icons-react'
 import { cn } from '@repo/ui/lib/utils'
 import Button from '@repo/ui/components/Button'
 
@@ -135,19 +136,26 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="flex flex-col items-center justify-center gap-4"
         >
-          <Button href="#projects">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="mailto:hi@aglabs.id" data-umami-event="mail-hero">
+              <Mail size={16} aria-hidden="true" />
+              Get In Touch
+            </Button>
+            <Button
+              href="https://wa.me/628159997830"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="whatsapp-hero"
+            >
+              <WhatsAppIcon size={16} aria-hidden="true" />
+              WhatsApp
+            </Button>
+          </div>
+          <Button href="#projects" variant="secondary">
             View Projects
             <ArrowDown size={16} aria-hidden="true" />
-          </Button>
-          <Button
-            href="mailto:hi@aglabs.id"
-            variant="secondary"
-            data-umami-event="mail-hero"
-          >
-            <Mail size={16} aria-hidden="true" />
-            Get In Touch
           </Button>
         </motion.div>
       </div>
