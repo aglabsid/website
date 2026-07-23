@@ -39,6 +39,7 @@ const ogImage = new URL('/open-graph.png', Astro.url).toString()
     {
       import.meta.env.PROD && (
         <script
+          is:inline
           async
           defer
           src="https://analytics.hendraaagil.dev/script.js"

@@ -27,6 +27,7 @@ const { title, description } = Astro.props
     {
       import.meta.env.PROD && (
         <script
+          is:inline
           async
           defer
           src="https://analytics.hendraaagil.dev/script.js"
