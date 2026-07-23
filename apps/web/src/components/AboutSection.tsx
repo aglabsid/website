@@ -45,10 +45,23 @@ export default function AboutSection() {
           <h2 className="text-foreground mb-4 text-4xl font-black tracking-tight md:text-5xl">
             What is <span className="text-main">Aglabs</span>?
           </h2>
-          <p className="text-foreground/75 text-lg">
+          <p className="text-foreground/75 mb-4 text-lg">
             Aglabs is an independent software lab. We experiment with ideas,
             build tools for ourselves and others, and ship what works. Think of
             it as a playground where code meets curiosity.
+          </p>
+          <p className="text-foreground/75 text-lg">
+            Founded and managed by{' '}
+            <a
+              href="https://hendraaagil.dev/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-main font-semibold underline underline-offset-4 transition-colors hover:no-underline"
+              data-umami-event="hendraaagil-about"
+            >
+              a software engineer
+            </a>{' '}
+            with 4+ years of experience.
           </p>
         </motion.div>
 
