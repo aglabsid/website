@@ -79,7 +79,7 @@ export default function Footer({ locale }: Props) {
             </a>
           </div>
           <p className="text-foreground/50 sm:min-w-46 text-xs sm:text-end">
-            &copy; {currentYear} Aglabs. {t.footer.rights}
+            &copy; {currentYear} PT Aglabs Sentral Inovasi. {t.footer.rights}
           </p>
         </div>
       </div>
