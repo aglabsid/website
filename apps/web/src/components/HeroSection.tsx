@@ -4,6 +4,11 @@ import { ArrowDown, Mail } from 'lucide-react'
 import { IconBrandWhatsapp as WhatsAppIcon } from '@tabler/icons-react'
 import { cn } from '@repo/ui/lib/utils'
 import Button from '@repo/ui/components/Button'
+import { useTranslations, type Locale } from '../i18n/ui'
+
+interface Props {
+  locale: Locale
+}
 
 const container = {
   hidden: {},
@@ -22,7 +27,8 @@ const wordVariant = {
   },
 }
 
-export default function HeroSection() {
+export default function HeroSection({ locale }: Props) {
+  const t = useTranslations(locale)
   const sectionRef = useRef<HTMLElement>(null)
 
   const rawX = useMotionValue(-9999)
@@ -50,8 +56,7 @@ export default function HeroSection() {
 
   const title = 'Aglabs'
   const subtitle = ['Software', 'Lab', '&', 'Experiment']
-  const tagline =
-    'Where ideas become experiments, and experiments become software.'
+  const tagline = t.hero.tagline
 
   return (
     <section
@@ -141,7 +146,7 @@ export default function HeroSection() {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button href="mailto:hi@aglabs.id" data-umami-event="mail-hero">
               <Mail size={16} aria-hidden="true" />
-              Get In Touch
+              {t.hero.getInTouch}
             </Button>
             <Button
               href="https://wa.me/628159997830"
@@ -150,11 +155,11 @@ export default function HeroSection() {
               data-umami-event="whatsapp-hero"
             >
               <WhatsAppIcon size={16} aria-hidden="true" />
-              WhatsApp
+              {t.hero.whatsapp}
             </Button>
           </div>
           <Button href="#projects" variant="secondary">
-            View Projects
+            {t.hero.viewProjects}
             <ArrowDown size={16} aria-hidden="true" />
           </Button>
         </motion.div>

@@ -5,22 +5,53 @@ import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@repo/ui/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Button from '@repo/ui/components/Button'
+import {
+  useTranslations,
+  localePath,
+  locales,
+  type Locale,
+} from '../i18n/ui'
 
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-]
+interface Props {
+  locale: Locale
+}
 
-export default function Navbar() {
+export default function Navbar({ locale }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const t = useTranslations(locale)
+
+  const links = [
+    { label: t.nav.about, href: '#about' },
+    { label: t.nav.projects, href: '#projects' },
+    { label: t.nav.contact, href: '#contact' },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const localeSwitcher = (
+    <div className="flex items-center gap-1.5 text-sm font-medium">
+      {locales.map((l, i) => (
+        <span key={l} className="flex items-center gap-1.5">
+          {i > 0 && <span className="text-foreground/30">/</span>}
+          <a
+            href={localePath(l)}
+            className={cn('transition-colors', {
+              'text-foreground font-bold': l === locale,
+              'text-foreground/50 hover:text-foreground': l !== locale,
+            })}
+            aria-current={l === locale ? 'true' : undefined}
+          >
+            {l.toUpperCase()}
+          </a>
+        </span>
+      ))}
+    </div>
+  )
 
   return (
     <motion.nav
@@ -37,7 +68,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <a
-          href="/"
+          href={localePath(locale)}
           className="text-foreground flex items-center gap-2 text-lg font-bold"
         >
           <img
@@ -60,17 +91,20 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          {localeSwitcher}
         </div>
 
-        <Button
-          variant="secondary"
-          size="icon"
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="sm:hidden"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-        </Button>
+        <div className="flex items-center gap-4 sm:hidden">
+          {localeSwitcher}
+          <Button
+            variant="secondary"
+            size="icon"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={t.nav.toggleMenu}
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </Button>
+        </div>
       </div>
 
       <AnimatePresence>

@@ -1,7 +1,10 @@
 {
   "order": 2,
   "title": "Nextalism",
-  "description": "Minimalist Next.js starter template with Neobrutalism UI. Comes batteries-included with Tailwind CSS, shadcn/ui, Drizzle ORM, and TypeScript.",
+  "description": {
+    "en": "Minimalist Next.js starter template with Neobrutalism UI. Comes batteries-included with Tailwind CSS, shadcn/ui, Drizzle ORM, and TypeScript.",
+    "id": "Template starter Next.js minimalis dengan UI Neobrutalism. Sudah lengkap dengan Tailwind CSS, shadcn/ui, Drizzle ORM, dan TypeScript."
+  },
   "tags": ["Next.js", "Neobrutalism", "Template", "Drizzle ORM"],
   "href": "https://nextalism.aglabs.id/"
 }

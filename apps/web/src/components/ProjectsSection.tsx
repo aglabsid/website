@@ -3,6 +3,7 @@
 import { motion, stagger } from 'motion/react'
 import { ExternalLink } from 'lucide-react'
 import Card from './Card'
+import { useTranslations, type Locale } from '../i18n/ui'
 
 interface Project {
   id: string
@@ -14,6 +15,7 @@ interface Project {
 
 interface Props {
   projects: Project[]
+  locale: Locale
 }
 
 const list = {
@@ -23,7 +25,9 @@ const list = {
   },
 }
 
-export default function ProjectsSection({ projects }: Props) {
+export default function ProjectsSection({ projects, locale }: Props) {
+  const t = useTranslations(locale)
+
   return (
     <section
       id="projects"
@@ -38,11 +42,11 @@ export default function ProjectsSection({ projects }: Props) {
           className="mb-16"
         >
           <h2 className="text-foreground mb-4 text-4xl font-black tracking-tight md:text-5xl">
-            <span className="text-main">Projects</span> Lab
+            {t.projects.headingPre}
+            <span className="text-main">{t.projects.headingAccent}</span>
+            {t.projects.headingPost}
           </h2>
-          <p className="text-foreground/75 text-lg">
-            A selection of experiments that made it out of the lab.
-          </p>
+          <p className="text-foreground/75 text-lg">{t.projects.subtitle}</p>
         </motion.div>
 
         <motion.div
@@ -66,7 +70,7 @@ export default function ProjectsSection({ projects }: Props) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-foreground/40 hover:text-main transition-colors"
-                        aria-label={`Visit ${project.title}`}
+                        aria-label={`${t.projects.visit} ${project.title}`}
                       >
                         <ExternalLink size={18} />
                       </a>

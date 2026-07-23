@@ -7,7 +7,10 @@ const projects = defineCollection({
   schema: z.object({
     order: z.number().int(),
     title: z.string(),
-    description: z.string(),
+    description: z.object({
+      en: z.string(),
+      id: z.string(),
+    }),
     tags: z.array(z.string()),
     href: z.url().optional(),
   }),

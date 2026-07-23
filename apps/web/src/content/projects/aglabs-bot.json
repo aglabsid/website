@@ -1,7 +1,10 @@
 {
   "order": 1,
   "title": "Aglabs Bot",
-  "description": "A Telegram bot built for the Aglabs ecosystem. Handles automation, notifications, and interactive commands for the community.",
+  "description": {
+    "en": "A Telegram bot built for the Aglabs ecosystem. Handles automation, notifications, and interactive commands for the community.",
+    "id": "Bot Telegram untuk ekosistem Aglabs. Menangani otomasi, notifikasi, dan perintah interaktif untuk komunitas."
+  },
   "tags": ["Telegram", "Bot", "Node.js"],
   "href": "https://bot.aglabs.id"
 }

@@ -1,27 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
-import Layout from '../layouts/Layout.astro'
-import Navbar from '../components/Navbar'
-import HeroSection from '../components/HeroSection'
-import AboutSection from '../components/AboutSection'
-import ProjectsSection from '../components/ProjectsSection'
-import Footer from '../components/Footer'
-
-const projectEntries = await getCollection('projects')
-const projects = projectEntries
-  .sort((a, b) => a.data.order - b.data.order)
-  .map(({ id, data: { order: _order, ...data } }) => ({ id, ...data }))
+import HomePage from '../components/HomePage.astro'
 ---
 
-<Layout
-  title="Aglabs — Software Lab & Experiment"
-  description="Aglabs is an independent software lab. We experiment with ideas, build tools, and ship what works."
->
-  <Navbar client:load />
-  <main>
-    <HeroSection client:load />
-    <AboutSection client:visible />
-    <ProjectsSection projects={projects} client:visible />
-  </main>
-  <Footer client:visible />
-</Layout>
+<HomePage locale="id" />

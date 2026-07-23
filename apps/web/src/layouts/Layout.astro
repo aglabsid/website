@@ -1,23 +1,39 @@
 ---
 import '@repo/ui/globals.css'
+import { localePath, locales, defaultLocale, type Locale } from '../i18n/ui'
 
 interface Props {
   title: string
   description: string
+  locale?: Locale
 }
 
-const { title, description } = Astro.props
+const { title, description, locale = defaultLocale } = Astro.props
 const ogImage = new URL('/open-graph.png', Astro.url).toString()
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.ico" />
+    {
+      locales.map((l) => (
+        <link
+          rel="alternate"
+          hreflang={l}
+          href={new URL(localePath(l), Astro.site)}
+        />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localePath(defaultLocale), Astro.site)}
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />

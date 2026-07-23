@@ -8,8 +8,14 @@ import {
   IconBrandWhatsapp as WhatsAppIcon,
 } from '@tabler/icons-react'
 import Button from '@repo/ui/components/Button'
+import { useTranslations, type Locale } from '../i18n/ui'
 
-export default function Footer() {
+interface Props {
+  locale: Locale
+}
+
+export default function Footer({ locale }: Props) {
+  const t = useTranslations(locale)
   const currentYear = new Date().getFullYear()
 
   return (
@@ -23,11 +29,12 @@ export default function Footer() {
           className="mb-12 text-center"
         >
           <h2 className="text-foreground mb-4 text-4xl font-black tracking-tight md:text-5xl">
-            Let&apos;s <span className="text-main">Connect</span>
+            {t.footer.headingPre}
+            <span className="text-main">{t.footer.headingAccent}</span>
+            {t.footer.headingPost}
           </h2>
           <p className="text-foreground/75 mx-auto mb-8 max-w-md">
-            Have an idea, a question, or just want to say hi? Drop us an email
-            or message us on WhatsApp.
+            {t.footer.copy}
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button href="mailto:hi@aglabs.id" data-umami-event="mail-footer">
@@ -72,7 +79,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="text-foreground/50 sm:min-w-46 text-xs sm:text-end">
-            &copy; {currentYear} Aglabs. All rights reserved.
+            &copy; {currentYear} Aglabs. {t.footer.rights}
           </p>
         </div>
       </div>

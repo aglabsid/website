@@ -1,34 +1,26 @@
 import { motion, stagger } from 'motion/react'
 import { GitFork, Wrench, Zap } from 'lucide-react'
 import Card from './Card'
+import { useTranslations, type Locale } from '../i18n/ui'
+
+interface Props {
+  locale: Locale
+}
 
 const list = {
   hidden: {},
   visible: { transition: { delayChildren: stagger(0.12) } },
 }
 
-const pillars = [
-  {
-    icon: <Wrench size={24} />,
-    title: 'Build',
-    description:
-      'We craft tools, apps, and systems from scratch. Every project starts as a raw idea that gets shaped into working software.',
-  },
-  {
-    icon: <GitFork size={24} />,
-    title: 'Experiment',
-    description:
-      'We explore unconventional approaches, test new tech stacks, and push boundaries. Not everything ships — and that is the point.',
-  },
-  {
-    icon: <Zap size={24} />,
-    title: 'Ship',
-    description:
-      'When an experiment proves itself, we ship it. Real users, real feedback, real iteration. From lab to production.',
-  },
+const pillarIcons = [
+  <Wrench key="build" size={24} />,
+  <GitFork key="experiment" size={24} />,
+  <Zap key="ship" size={24} />,
 ]
 
-export default function AboutSection() {
+export default function AboutSection({ locale }: Props) {
+  const t = useTranslations(locale)
+
   return (
     <section
       id="about"
@@ -43,15 +35,13 @@ export default function AboutSection() {
           className="mb-16 max-w-2xl"
         >
           <h2 className="text-foreground mb-4 text-4xl font-black tracking-tight md:text-5xl">
-            What is <span className="text-main">Aglabs</span>?
+            {t.about.headingPre}
+            <span className="text-main">{t.about.headingAccent}</span>
+            {t.about.headingPost}
           </h2>
-          <p className="text-foreground/75 mb-4 text-lg">
-            Aglabs is an independent software lab. We experiment with ideas,
-            build tools for ourselves and others, and ship what works. Think of
-            it as a playground where code meets curiosity.
-          </p>
+          <p className="text-foreground/75 mb-4 text-lg">{t.about.intro}</p>
           <p className="text-foreground/75 text-lg">
-            Founded and managed by{' '}
+            {t.about.founderPre}
             <a
               href="https://hendraaagil.dev/about/"
               target="_blank"
@@ -59,9 +49,9 @@ export default function AboutSection() {
               className="text-main font-semibold underline underline-offset-4 transition-colors hover:no-underline"
               data-umami-event="hendraaagil-about"
             >
-              a software engineer
-            </a>{' '}
-            with 4+ years of experience.
+              {t.about.founderLink}
+            </a>
+            {t.about.founderPost}
           </p>
         </motion.div>
 
@@ -72,10 +62,10 @@ export default function AboutSection() {
           viewport={{ once: true, margin: '-80px' }}
           className="grid gap-6 md:grid-cols-3"
         >
-          {pillars.map((pillar) => (
+          {t.about.pillars.map((pillar, i) => (
             <Card key={pillar.title}>
               <div className="border-border bg-main text-main-foreground mb-4 inline-flex size-12 items-center justify-center border-2">
-                {pillar.icon}
+                {pillarIcons[i]}
               </div>
               <h3 className="text-foreground mb-2 text-xl font-bold">
                 {pillar.title}
