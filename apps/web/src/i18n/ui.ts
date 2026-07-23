@@ -68,7 +68,7 @@ const id: typeof en = {
   meta: {
     title: 'Aglabs — Software Lab & Experiment',
     description:
-      'Aglabs adalah lab software independen. Kami bereksperimen dengan ide, membangun tools, dan merilis yang berhasil.',
+      'Aglabs itu lab software independen. Kita suka ngulik ide, bikin tools, dan merilis yang beneran jalan.',
   },
   nav: {
     about: 'Tentang',
@@ -77,35 +77,35 @@ const id: typeof en = {
     toggleMenu: 'Buka menu',
   },
   hero: {
-    tagline: 'Tempat ide menjadi eksperimen, dan eksperimen menjadi software.',
-    getInTouch: 'Hubungi Kami',
+    tagline: 'Tempat ide jadi eksperimen, dan eksperimen jadi software.',
+    getInTouch: 'Ngobrol Yuk',
     whatsapp: 'WhatsApp',
-    viewProjects: 'Lihat Proyek',
+    viewProjects: 'Intip Proyek',
   },
   about: {
     headingPre: 'Apa itu ',
     headingAccent: 'Aglabs',
     headingPost: '?',
     intro:
-      'Aglabs adalah lab software independen. Kami bereksperimen dengan ide, membangun tools untuk kami sendiri dan orang lain, serta merilis yang berhasil. Anggap saja playground tempat kode bertemu rasa penasaran.',
-    founderPre: 'Didirikan dan dikelola oleh ',
+      'Aglabs itu lab software independen. Kita suka ngulik ide, bikin tools buat sendiri maupun orang lain, dan merilis yang beneran jalan. Anggap aja playground tempat kode ketemu rasa penasaran.',
+    founderPre: 'Didirikan dan diurus langsung oleh ',
     founderLink: 'seorang software engineer',
-    founderPost: ' dengan pengalaman 4+ tahun.',
+    founderPost: ' yang punya pengalaman 4+ tahun.',
     pillars: [
       {
         title: 'Build',
         description:
-          'Kami membuat tools, aplikasi, dan sistem dari nol. Setiap proyek berawal dari ide mentah yang dibentuk menjadi software yang berfungsi.',
+          'Kita bikin tools, aplikasi, dan sistem dari nol. Setiap proyek berawal dari ide mentah yang diracik jadi software yang beneran jalan.',
       },
       {
         title: 'Experiment',
         description:
-          'Kami menjelajahi pendekatan tak biasa, mencoba tech stack baru, dan mendorong batasan. Tidak semuanya dirilis — dan justru itu intinya.',
+          'Kita suka nyoba pendekatan yang nggak biasa, ngulik tech stack baru, dan dorong batasan. Nggak semua dirilis — dan justru itu serunya.',
       },
       {
         title: 'Ship',
         description:
-          'Saat eksperimen terbukti berhasil, kami merilisnya. Pengguna nyata, feedback nyata, iterasi nyata. Dari lab ke production.',
+          'Kalau eksperimen terbukti oke, langsung kita rilis. Pengguna nyata, feedback nyata, iterasi nyata. Dari lab ke production.',
       },
     ],
   },
@@ -113,14 +113,14 @@ const id: typeof en = {
     headingPre: 'Lab ',
     headingAccent: 'Proyek',
     headingPost: '',
-    subtitle: 'Pilihan eksperimen yang berhasil keluar dari lab.',
+    subtitle: 'Kumpulan eksperimen yang berhasil lolos dari lab.',
     visit: 'Kunjungi',
   },
   footer: {
-    headingPre: 'Mari ',
-    headingAccent: 'Terhubung',
+    headingPre: 'Yuk ',
+    headingAccent: 'Ngobrol',
     headingPost: '',
-    copy: 'Punya ide, pertanyaan, atau sekadar ingin menyapa? Kirim email atau hubungi kami lewat WhatsApp.',
+    copy: 'Punya ide, pertanyaan, atau cuma mau nyapa? Kirim email atau chat kita di WhatsApp.',
     rights: 'Hak cipta dilindungi.',
   },
 }

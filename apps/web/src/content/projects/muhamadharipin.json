@@ -3,7 +3,7 @@
   "title": "Muhamad Haripin",
   "description": {
     "en": "Personal website for Muhamad Haripin, PhD. Multilingual support with auto language detection and content synced from Sanity CMS, including a dedicated CMS site for content management.",
-    "id": "Website personal untuk Muhamad Haripin, PhD. Dukungan multibahasa dengan deteksi bahasa otomatis dan konten tersinkron dari Sanity CMS, termasuk situs CMS khusus untuk pengelolaan konten."
+    "id": "Website personal buat Muhamad Haripin, PhD. Mendukung multibahasa dengan deteksi bahasa otomatis dan konten yang sinkron dari Sanity CMS, lengkap sama situs CMS khusus buat ngatur konten."
   },
   "tags": ["Astro", "Sanity CMS", "Multilingual", "Static"],
   "href": "https://muhamadharipin.id/"

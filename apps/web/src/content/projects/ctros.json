@@ -3,7 +3,7 @@
   "title": "Ctros",
   "description": {
     "en": "A personal web template featuring a portfolio, works showcase, and technical blog. Built as a reusable starting point for developer personal sites.",
-    "id": "Template web personal dengan portofolio, showcase karya, dan blog teknis. Dibangun sebagai titik awal reusable untuk situs personal developer."
+    "id": "Template web personal dengan portofolio, showcase karya, dan blog teknis. Dibikin sebagai titik awal yang bisa dipakai ulang buat situs personal developer."
   },
   "tags": ["Astro", "Blog", "Portfolio", "Template"],
   "href": "https://ctros.aglabs.id/"
