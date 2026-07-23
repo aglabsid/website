@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Development
-pnpm dev           # Run all apps (web on :3000, bot on :3001)
+pnpm dev           # Run all apps (web on :4321, bot on :4322)
 
 # Build & validation
 pnpm build         # Build all apps and packages
@@ -32,7 +32,7 @@ Both apps are **fully static** (Astro default output). Deployed to Netlify via `
 
 **Packages:**
 
-- `packages/ui` — Shared CSS/utils (`@repo/ui`). Exports `globals.css` (Tailwind v4 design tokens) and `cn` util. No component exports — components live per-app in `src/components/`.
+- `packages/ui` — Shared CSS/utils (`@repo/ui`). Exports `globals.css` (Tailwind v4 design tokens), `cn` util, and shared React components (`./components/*`). Page-level components live per-app in `src/components/`.
 - `packages/eslint-config` — Shared ESLint configs; apps use the `base` export
 - `packages/typescript-config` — Shared tsconfig templates
 
