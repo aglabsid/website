@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aglabs.id/sitemap-index.xml
