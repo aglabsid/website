@@ -30,7 +30,10 @@ export default function AboutSection({ locale }: Props) {
   const t = useTranslations(locale)
 
   return (
-    <section id="about" className="border-border border-t-2 px-4 py-24 md:py-32">
+    <section
+      id="about"
+      className="border-border border-t-2 px-4 py-24 md:py-32"
+    >
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

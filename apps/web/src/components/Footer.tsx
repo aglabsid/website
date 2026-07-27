@@ -19,7 +19,10 @@ export default function Footer({ locale }: Props) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer id="contact" className="border-border border-t-2 px-4 py-20 md:py-24">
+    <footer
+      id="contact"
+      className="border-border border-t-2 px-4 py-20 md:py-24"
+    >
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

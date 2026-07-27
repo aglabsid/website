@@ -5,12 +5,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@repo/ui/lib/utils'
 import { Menu, X } from 'lucide-react'
 import Button from '@repo/ui/components/Button'
-import {
-  useTranslations,
-  localePath,
-  locales,
-  type Locale,
-} from '../i18n/ui'
+import { useTranslations, localePath, locales, type Locale } from '../i18n/ui'
 
 interface Props {
   locale: Locale

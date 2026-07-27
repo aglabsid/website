@@ -137,10 +137,13 @@ export default function HeroSection({ locale }: Props) {
           </div>
           <ul>
             {index.map((row) => (
-              <li key={row.href} className="border-border border-b-2 last:border-b-0">
+              <li
+                key={row.href}
+                className="border-border border-b-2 last:border-b-0"
+              >
                 <a
                   href={row.href}
-                  className="group hover:bg-main/10 flex items-center gap-4 px-5 py-5 transition-colors"
+                  className="hover:bg-main/10 group flex items-center gap-4 px-5 py-5 transition-colors"
                 >
                   <span className="text-foreground/40 group-hover:text-main text-sm font-bold tabular-nums transition-colors">
                     {row.no}
