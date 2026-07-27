@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@repo/ui/lib/utils'
 import { Menu, X } from 'lucide-react'
@@ -17,21 +17,14 @@ interface Props {
 }
 
 export default function Navbar({ locale }: Props) {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const t = useTranslations(locale)
 
   const links = [
-    { label: t.nav.about, href: '#about' },
-    { label: t.nav.projects, href: '#projects' },
-    { label: t.nav.contact, href: '#contact' },
+    { no: '01', label: t.nav.about, href: '#about' },
+    { no: '02', label: t.nav.projects, href: '#projects' },
+    { no: '03', label: t.nav.contact, href: '#contact' },
   ]
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   const localeSwitcher = (
     <div className="flex items-center gap-1.5 text-sm font-medium">
@@ -57,14 +50,8 @@ export default function Navbar({ locale }: Props) {
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-      className={cn(
-        'fixed left-0 right-0 top-0 z-50 border-b-2 transition-colors',
-        {
-          'border-border bg-background': menuOpen || scrolled,
-          'border-transparent bg-transparent': !menuOpen && !scrolled,
-        },
-      )}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="border-border bg-background/90 fixed left-0 right-0 top-0 z-50 border-b-2 backdrop-blur"
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <a
@@ -79,6 +66,9 @@ export default function Navbar({ locale }: Props) {
             className="inline-block"
           />
           Aglabs
+          <span className="text-foreground/40 hidden text-xs font-bold uppercase tracking-[0.2em] sm:inline">
+            / Lab
+          </span>
         </a>
 
         <div className="hidden items-center gap-6 sm:flex">
@@ -86,8 +76,11 @@ export default function Navbar({ locale }: Props) {
             <a
               key={link.href}
               href={link.href}
-              className="text-foreground/75 hover:text-foreground text-sm font-medium transition-colors"
+              className="text-foreground/75 hover:text-foreground group flex items-center gap-1.5 text-sm font-medium transition-colors"
             >
+              <span className="text-foreground/30 group-hover:text-main text-xs font-bold tabular-nums transition-colors">
+                {link.no}
+              </span>
               {link.label}
             </a>
           ))}
@@ -116,7 +109,7 @@ export default function Navbar({ locale }: Props) {
             transition={{ duration: 0.2 }}
             className="border-border bg-background overflow-hidden border-b-2 sm:hidden"
           >
-            <div className="flex flex-col gap-2 px-4 py-4">
+            <div className="flex flex-col px-4 py-2">
               {links.map((link) => (
                 <a
                   key={link.href}
@@ -130,8 +123,11 @@ export default function Navbar({ locale }: Props) {
                         ?.scrollIntoView({ behavior: 'smooth' })
                     }, 200)
                   }}
-                  className="text-foreground/75 hover:text-foreground py-2 text-sm font-medium transition-colors"
+                  className="text-foreground/75 hover:text-foreground border-border flex items-center gap-3 border-b-2 py-3 text-sm font-medium transition-colors last:border-b-0"
                 >
+                  <span className="text-foreground/30 text-xs font-bold tabular-nums">
+                    {link.no}
+                  </span>
                   {link.label}
                 </a>
               ))}

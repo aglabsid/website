@@ -1,6 +1,5 @@
-import { motion, stagger, useMotionValue, useSpring } from 'motion/react'
-import { useRef } from 'react'
-import { ArrowDown, Mail } from 'lucide-react'
+import { motion, stagger } from 'motion/react'
+import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react'
 import { IconBrandWhatsapp as WhatsAppIcon } from '@tabler/icons-react'
 import { cn } from '@repo/ui/lib/utils'
 import Button from '@repo/ui/components/Button'
@@ -18,132 +17,93 @@ const container = {
 }
 
 const wordVariant = {
-  hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.5, ease: 'easeOut' as const },
+    transition: { duration: 0.4, ease: 'easeOut' as const },
   },
 }
 
 export default function HeroSection({ locale }: Props) {
   const t = useTranslations(locale)
-  const sectionRef = useRef<HTMLElement>(null)
 
-  const rawX = useMotionValue(-9999)
-  const rawY = useMotionValue(-9999)
-  const cursorX = useSpring(rawX, { stiffness: 80, damping: 20, mass: 0.5 })
-  const cursorY = useSpring(rawY, { stiffness: 80, damping: 20, mass: 0.5 })
-
-  const rawOpacity = useMotionValue(0.4)
-  const blobOpacity = useSpring(rawOpacity, { stiffness: 120, damping: 20 })
-
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
-    const rect = sectionRef.current?.getBoundingClientRect()
-    if (!rect) return
-    rawX.set(e.clientX - rect.left - 160)
-    rawY.set(e.clientY - rect.top - 160)
-  }
-
-  function handleMouseDown() {
-    rawOpacity.set(0.6)
-  }
-
-  function handleMouseUp() {
-    rawOpacity.set(0.4)
-  }
-
-  const title = 'Aglabs'
   const subtitle = ['Software', 'Lab', '&', 'Experiment']
-  const tagline = t.hero.tagline
+
+  const index = [
+    { no: '01', label: t.nav.about, href: '#about' },
+    { no: '02', label: t.nav.projects, href: '#projects' },
+    { no: '03', label: t.nav.contact, href: '#contact' },
+  ]
 
   return (
-    <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 py-16"
-    >
-      <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, color-mix(in oklch, var(--border) 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklch, var(--border) 5%, transparent) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }}
-        />
-        <div className="bg-main absolute left-1/4 top-1/4 size-96 opacity-20 blur-[120px]" />
-        <div className="bg-main absolute bottom-1/4 right-1/4 size-64 opacity-20 blur-[100px]" />
-        <motion.div
-          className="bg-main pointer-events-none absolute size-80 rounded-full blur-[80px]"
-          style={{ x: cursorX, y: cursorY, opacity: blobOpacity }}
-        />
-      </div>
+    <section className="relative overflow-hidden px-4 pb-20 pt-28 md:pb-28 md:pt-36">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, color-mix(in oklch, var(--border) 6%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklch, var(--border) 6%, transparent) 1px, transparent 1px)',
+          backgroundSize: '72px 72px',
+          maskImage:
+            'radial-gradient(120% 90% at 50% 0%, black 40%, transparent 100%)',
+        }}
+      />
 
-      <div className="mx-auto w-full max-w-4xl text-center">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="pointer-events-none mb-8 inline-block select-none"
-        >
-          <img
-            src="/logo-primary.svg"
-            alt="Aglabs"
-            width={96}
-            height={96}
-            className="mx-auto size-24 md:size-32 lg:size-40"
-          />
-        </motion.div>
+      <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-12 lg:gap-8">
+        {/* Statement */}
+        <div className="lg:col-span-7">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="text-foreground/50 mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]"
+          >
+            <span className="bg-main inline-block size-2.5" />
+            Independent Software Lab
+          </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-foreground mb-4 text-7xl font-black tracking-tight md:text-8xl"
-        >
-          {title}
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-foreground text-7xl font-black leading-[0.9] tracking-tight md:text-8xl"
+            style={{ overflowWrap: 'anywhere' }}
+          >
+            Aglabs
+          </motion.h1>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          className="text-foreground mb-8 flex flex-wrap items-center justify-center gap-2 text-3xl font-bold sm:gap-3 md:text-4xl"
-        >
-          {subtitle.map((word, i) => (
-            <motion.span
-              key={i}
-              variants={wordVariant}
-              className={cn({
-                'text-main': word === '&',
-                'text-foreground/75': word !== '&',
-              })}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </motion.div>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            className="text-foreground/80 mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-2xl font-bold md:text-3xl"
+          >
+            {subtitle.map((word, i) => (
+              <motion.span
+                key={i}
+                variants={wordVariant}
+                className={cn({ 'text-main': word === '&' })}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-foreground/50 mx-auto mb-12 max-w-xl text-lg"
-        >
-          {tagline}
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-foreground/60 mt-6 max-w-md text-lg"
+          >
+            {t.hero.tagline}
+          </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-col items-center justify-center gap-4"
-        >
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
             <Button href="mailto:hi@aglabs.id" data-umami-event="mail-hero">
               <Mail size={16} aria-hidden="true" />
               {t.hero.getInTouch}
@@ -157,28 +117,51 @@ export default function HeroSection({ locale }: Props) {
               <WhatsAppIcon size={16} aria-hidden="true" />
               {t.hero.whatsapp}
             </Button>
-          </div>
-          <Button href="#projects" variant="secondary">
-            {t.hero.viewProjects}
-            <ArrowDown size={16} aria-hidden="true" />
-          </Button>
-        </motion.div>
-      </div>
+            <Button href="#projects" variant="secondary">
+              {t.hero.viewProjects}
+              <ArrowDown size={16} aria-hidden="true" />
+            </Button>
+          </motion.div>
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 sm:bottom-16"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="text-main/50 inline-block"
+        {/* Lab index panel */}
+        <motion.aside
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="border-border bg-secondary-background shadow-shadow self-start border-2 lg:col-span-5"
         >
-          <ArrowDown size={24} />
-        </motion.div>
-      </motion.div>
+          <div className="border-border text-foreground/50 flex items-center justify-between border-b-2 px-5 py-3 text-xs font-bold uppercase tracking-[0.2em]">
+            <span>Index</span>
+            <span className="tabular-nums">03</span>
+          </div>
+          <ul>
+            {index.map((row) => (
+              <li key={row.href} className="border-border border-b-2 last:border-b-0">
+                <a
+                  href={row.href}
+                  className="group hover:bg-main/10 flex items-center gap-4 px-5 py-5 transition-colors"
+                >
+                  <span className="text-foreground/40 group-hover:text-main text-sm font-bold tabular-nums transition-colors">
+                    {row.no}
+                  </span>
+                  <span className="text-foreground text-lg font-bold">
+                    {row.label}
+                  </span>
+                  <ArrowUpRight
+                    size={18}
+                    aria-hidden="true"
+                    className="text-foreground/40 group-hover:text-main ml-auto transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="border-border text-foreground/50 border-t-2 px-5 py-3 text-xs font-medium">
+            Est. — independent · 4+ yrs
+          </div>
+        </motion.aside>
+      </div>
     </section>
   )
 }

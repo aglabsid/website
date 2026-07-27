@@ -1,8 +1,8 @@
 'use client'
 
-import { motion, stagger } from 'motion/react'
-import { ExternalLink } from 'lucide-react'
-import Card from './Card'
+import { motion } from 'motion/react'
+import { ArrowUpRight } from 'lucide-react'
+import { cn } from '@repo/ui/lib/utils'
 import { useTranslations, type Locale } from '../i18n/ui'
 
 interface Project {
@@ -18,20 +18,13 @@ interface Props {
   locale: Locale
 }
 
-const list = {
-  hidden: {},
-  visible: {
-    transition: { delayChildren: stagger(0.12) },
-  },
-}
-
 export default function ProjectsSection({ projects, locale }: Props) {
   const t = useTranslations(locale)
 
   return (
     <section
       id="projects"
-      className="border-border bg-main/10 border-t-2 px-4 py-24 md:py-32"
+      className="border-border bg-main/5 border-t-2 px-4 py-24 md:py-32"
     >
       <div className="mx-auto max-w-5xl">
         <motion.div
@@ -39,44 +32,52 @@ export default function ProjectsSection({ projects, locale }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
         >
-          <h2 className="text-foreground mb-4 text-4xl font-black tracking-tight md:text-5xl">
-            {t.projects.headingPre}
-            <span className="text-main">{t.projects.headingAccent}</span>
-            {t.projects.headingPost}
-          </h2>
-          <p className="text-foreground/75 text-lg">{t.projects.subtitle}</p>
+          <div>
+            <p className="text-foreground/50 mb-4 text-xs font-bold uppercase tracking-[0.2em]">
+              02 — {t.nav.projects}
+            </p>
+            <h2 className="text-foreground text-4xl font-black tracking-tight md:text-5xl">
+              {t.projects.headingPre}
+              <span className="text-main">{t.projects.headingAccent}</span>
+              {t.projects.headingPost}
+            </h2>
+          </div>
+          <p className="text-foreground/75 max-w-sm text-lg sm:text-right">
+            {t.projects.subtitle}
+          </p>
         </motion.div>
 
         <motion.div
-          variants={list}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-80px' }}
-          className="grid gap-6 md:grid-cols-2"
+          transition={{ duration: 0.5 }}
+          className="border-border bg-border grid gap-[2px] border-2 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {projects.map((project) => (
-            <Card key={project.id}>
-              <div className="flex h-full flex-col justify-between">
+          {projects.map((project, i) => {
+            const cellBase =
+              'bg-secondary-background flex h-full flex-col justify-between gap-6 p-6 transition-colors'
+            const inner = (
+              <>
                 <div>
-                  <div className="mb-4 flex items-start justify-between">
-                    <h3 className="text-foreground text-xl font-bold">
-                      {project.title}
-                    </h3>
+                  <div className="mb-4 flex items-start justify-between gap-3">
+                    <span className="text-foreground/40 text-xs font-bold tabular-nums">
+                      P-{String(i + 1).padStart(2, '0')}
+                    </span>
                     {project.href && (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground/40 hover:text-main transition-colors"
-                        aria-label={`${t.projects.visit} ${project.title}`}
-                      >
-                        <ExternalLink size={18} />
-                      </a>
+                      <ArrowUpRight
+                        size={18}
+                        aria-hidden="true"
+                        className="text-foreground/40 group-hover:text-main shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
                     )}
                   </div>
-                  <p className="text-foreground/75 mb-6 text-sm leading-relaxed">
+                  <h3 className="text-foreground group-hover:text-main mb-3 text-xl font-bold transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-foreground/75 text-sm leading-relaxed">
                     {project.description}
                   </p>
                 </div>
@@ -90,9 +91,26 @@ export default function ProjectsSection({ projects, locale }: Props) {
                     </span>
                   ))}
                 </div>
+              </>
+            )
+
+            return project.href ? (
+              <a
+                key={project.id}
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t.projects.visit} ${project.title}`}
+                className={cn('group hover:bg-background', cellBase)}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={project.id} className={cn('group', cellBase)}>
+                {inner}
               </div>
-            </Card>
-          ))}
+            )
+          })}
         </motion.div>
       </div>
     </section>
