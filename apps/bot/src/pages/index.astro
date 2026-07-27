@@ -5,28 +5,98 @@ import ChatButton from '../components/ChatButton.astro'
 ---
 
 <Layout title="Aglabs Bot" description="A bot by Aglabs.">
-  <main
-    class="mx-auto flex w-full max-w-lg flex-col items-center justify-center space-y-8 px-4 py-8"
-  >
-    <div class="px-4">
-      <ImageCard
-        src="/logo.png"
-        alt="Aglabs Bot"
-        class="max-w-3xs rounded-full"
-        fetchpriority="high"
-      />
-    </div>
-    <h1 class="text-center text-4xl font-bold">
-      <a
-        href="https://aglabs.id"
-        class="text-main hover:underline"
-        target="_blank"
-        rel="noreferrer noopener"
+  <main class="mx-auto w-full max-w-md px-4 py-8">
+    {/* Console panel */}
+    <section
+      class="border-border bg-secondary-background shadow-shadow border-2"
+    >
+      {/* Status bar — label + live indicator (not browser chrome) */}
+      <header
+        class="border-border text-foreground/60 flex items-center justify-between border-b-2 px-4 py-2.5 font-mono text-xs font-medium"
       >
-        Aglabs
-      </a>{' '}
-      Bot
-    </h1>
-    <ChatButton />
+        <span class="tracking-wide">aglabs://bot</span>
+        <span class="flex items-center gap-2 uppercase tracking-[0.15em]">
+          <span class="status-dot bg-main inline-block size-2 rounded-full"
+          ></span>
+          online
+        </span>
+      </header>
+
+      {/* Body */}
+      <div class="flex flex-col gap-6 p-6 sm:p-8">
+        <ImageCard
+          src="/logo.png"
+          alt="Aglabs Bot"
+          class="size-16"
+          fetchpriority="high"
+        />
+
+        <div>
+          <h1 class="text-foreground text-4xl font-black tracking-tight">
+            <a
+              href="https://aglabs.id"
+              class="hover:text-main underline decoration-2 underline-offset-4 transition-colors hover:no-underline"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Aglabs
+            </a>
+            Bot
+          </h1>
+          <p
+            class="text-foreground/70 mt-3 flex items-center gap-2 font-mono text-sm"
+          >
+            <span class="text-main">&gt;</span>
+            a bot by aglabs
+            <span class="cursor-blink" aria-hidden="true">▍</span>
+          </p>
+        </div>
+
+        <ChatButton />
+
+        <p
+          class="text-foreground/40 border-border border-t-2 pt-4 font-mono text-xs"
+        >
+          opens t.me/aglabs_bot
+        </p>
+      </div>
+    </section>
   </main>
 </Layout>
+
+<style>
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  .cursor-blink {
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  .status-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor-blink,
+    .status-dot {
+      animation: none;
+    }
+  }
+</style>
