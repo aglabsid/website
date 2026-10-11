@@ -99,7 +99,7 @@ export default function Footer({ locale }: Props) {
               Legal
             </p>
             <p className="text-foreground/50 text-xs leading-relaxed">
-              &copy; {currentYear} PT Aglabs Sentral Inovasi.
+              &copy; {currentYear} Aglabs.
               <br />
               {t.footer.rights}
             </p>
