@@ -101,7 +101,10 @@ export default function ProjectsSection({ projects, locale }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${t.projects.visit} ${project.title}`}
-                className={cn('hover:bg-background group', cellBase)}
+                className={cn(
+                  'hover:bg-background group focus-visible:ring-main focus-visible:ring-2 focus-visible:ring-inset focus-visible:outline-none',
+                  cellBase,
+                )}
               >
                 {inner}
               </a>

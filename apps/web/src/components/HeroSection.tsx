@@ -125,7 +125,7 @@ export default function HeroSection({ locale }: Props) {
               >
                 <a
                   href={row.href}
-                  className="hover:bg-main/10 group flex items-center gap-4 px-5 py-5 transition-colors"
+                  className="hover:bg-main/10 group flex items-center gap-4 px-5 py-5 transition-colors focus-visible:ring-main focus-visible:ring-2 focus-visible:ring-inset focus-visible:outline-none"
                 >
                   <span className="text-foreground/40 group-hover:text-main text-sm font-bold tabular-nums transition-colors">
                     {row.no}
