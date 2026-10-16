@@ -161,7 +161,7 @@ export default function HeroSection({ locale }: Props) {
             ))}
           </ul>
           <div className="border-border text-foreground/50 border-t-2 px-5 py-3 text-xs font-medium">
-            Est. — independent · 4+ yrs
+            Est. — independent · 5+ yrs
           </div>
         </motion.aside>
       </div>

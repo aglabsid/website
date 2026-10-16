@@ -29,7 +29,7 @@ const en = {
       'Aglabs is an independent software lab. We experiment with ideas, build tools for ourselves and others, and ship what works. Think of it as a playground where code meets curiosity.',
     founderPre: 'Founded and managed by ',
     founderLink: 'a software engineer',
-    founderPost: ' with 4+ years of experience.',
+    founderPost: ' with 5+ years of experience.',
     pillars: [
       {
         title: 'Build',
@@ -90,7 +90,7 @@ const id: typeof en = {
       'Aglabs itu lab software independen. Kita suka ngulik ide, bikin tools buat sendiri maupun orang lain, dan merilis yang beneran jalan. Anggap aja playground tempat kode ketemu rasa penasaran.',
     founderPre: 'Didirikan dan diurus langsung oleh ',
     founderLink: 'seorang software engineer',
-    founderPost: ' yang punya pengalaman 4+ tahun.',
+    founderPost: ' yang punya pengalaman 5+ tahun.',
     pillars: [
       {
         title: 'Build',
