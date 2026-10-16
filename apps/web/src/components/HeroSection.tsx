@@ -1,4 +1,3 @@
-import { motion, stagger } from 'motion/react'
 import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react'
 import { IconBrandWhatsapp as WhatsAppIcon } from '@tabler/icons-react'
 import { cn } from '@repo/ui/lib/utils'
@@ -9,21 +8,9 @@ interface Props {
   locale: Locale
 }
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: { delayChildren: stagger(0.06) },
-  },
-}
-
-const wordVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' as const },
-  },
-}
+// CSS entrance: runs on first paint, no JS/hydration wait.
+const enter =
+  'animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-500 ease-out motion-reduce:animate-none'
 
 export default function HeroSection({ locale }: Props) {
   const t = useTranslations(locale)
@@ -52,57 +39,51 @@ export default function HeroSection({ locale }: Props) {
       <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-12 lg:gap-8">
         {/* Statement */}
         <div className="lg:col-span-7">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-foreground/50 mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]"
+          <p
+            className={cn(
+              enter,
+              'text-foreground/50 mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]',
+            )}
           >
             <span className="bg-main inline-block size-2.5" />
             Independent Software Lab
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-foreground text-7xl font-black leading-[0.9] tracking-tight md:text-8xl"
-            style={{ overflowWrap: 'anywhere' }}
+          <h1
+            className={cn(
+              enter,
+              'text-foreground text-7xl font-black leading-[0.9] tracking-tight md:text-8xl',
+            )}
+            style={{ overflowWrap: 'anywhere', animationDelay: '0.1s' }}
           >
             Aglabs
-          </motion.h1>
+          </h1>
 
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="visible"
-            className="text-foreground/80 mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-2xl font-bold md:text-3xl"
-          >
+          <div className="text-foreground/80 mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-2xl font-bold md:text-3xl">
             {subtitle.map((word, i) => (
-              <motion.span
+              <span
                 key={i}
-                variants={wordVariant}
-                className={cn({ 'text-main': word === '&' })}
+                className={cn(enter, { 'text-main': word === '&' })}
+                style={{ animationDelay: `${0.2 + i * 0.06}s` }}
               >
                 {word}
-              </motion.span>
+              </span>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-foreground/60 mt-6 max-w-md text-lg"
+          <p
+            className={cn(enter, 'text-foreground/60 mt-6 max-w-md text-lg')}
+            style={{ animationDelay: '0.4s' }}
           >
             {t.hero.tagline}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
-            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          <div
+            className={cn(
+              enter,
+              'mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap',
+            )}
+            style={{ animationDelay: '0.55s' }}
           >
             <Button href="mailto:hi@aglabs.id" data-umami-event="mail-hero">
               <Mail size={16} aria-hidden="true" />
@@ -121,15 +102,16 @@ export default function HeroSection({ locale }: Props) {
               {t.hero.viewProjects}
               <ArrowDown size={16} aria-hidden="true" />
             </Button>
-          </motion.div>
+          </div>
         </div>
 
         {/* Lab index panel */}
-        <motion.aside
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="border-border bg-secondary-background shadow-shadow self-start border-2 lg:col-span-5"
+        <aside
+          className={cn(
+            enter,
+            'border-border bg-secondary-background shadow-shadow self-start border-2 lg:col-span-5',
+          )}
+          style={{ animationDelay: '0.3s' }}
         >
           <div className="border-border text-foreground/50 flex items-center justify-between border-b-2 px-5 py-3 text-xs font-bold uppercase tracking-[0.2em]">
             <span>Index</span>
@@ -163,7 +145,7 @@ export default function HeroSection({ locale }: Props) {
           <div className="border-border text-foreground/50 border-t-2 px-5 py-3 text-xs font-medium">
             Est. — independent · 5+ yrs
           </div>
-        </motion.aside>
+        </aside>
       </div>
     </section>
   )

@@ -30,7 +30,7 @@ const projects = projectEntries
 <Layout title={t.meta.title} description={t.meta.description} locale={locale}>
   <Navbar client:load locale={locale} />
   <main>
-    <HeroSection client:load locale={locale} />
+    <HeroSection locale={locale} />
     <AboutSection client:visible locale={locale} />
     <ProjectsSection projects={projects} client:visible locale={locale} />
   </main>
