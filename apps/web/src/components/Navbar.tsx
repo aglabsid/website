@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@repo/ui/lib/utils'
 import { Menu, X } from 'lucide-react'
@@ -20,6 +20,23 @@ export default function Navbar({ locale }: Props) {
     { no: '02', label: t.nav.projects, href: '#projects' },
     { no: '03', label: t.nav.contact, href: '#contact' },
   ]
+
+  // Keys 1/2/3 jump to the matching nav section.
+  useEffect(() => {
+    const sections = ['#about', '#projects', '#contact']
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      const el = e.target as HTMLElement | null
+      if (el?.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el?.tagName ?? ''))
+        return
+      const i = Number(e.key) - 1
+      const href = sections[i]
+      if (!href) return
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   const localeSwitcher = (
     <div className="flex items-center gap-1.5 text-sm font-medium">
